@@ -1,0 +1,21 @@
+version: '3.7'
+services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.10.0
+    environment:
+      - discovery.type=single-node
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - xpack.security.enabled=false
+      - xpack.monitoring.enabled=false
+    volumes:
+      - elasticsearch-data:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+
+volumes:
+  elasticsearch-data:
+    driver: gcs
+    driver_opts:
+      bucket: crm-elasticsearch-log
+      prefix: elasticsearch
+      credentials_file: /mnt/elasticsearch/secrets/gcs-key.json

@@ -1,0 +1,20 @@
+version: '3.6'
+services:
+  rabbit:
+    container_name: rabbit
+    image: rabbitmq:3-management
+    volumes:
+    - ./rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf:ro
+    ports:
+      - '15672:15672'
+      - '5672:5672'
+      - '5673:5673'
+
+  redis:
+    container_name: redis
+    image: redis:6.2.7
+    volumes:
+      - ./redis.conf:/redis.conf:ro
+    ports:
+      - '6379:6379'
+    command: [ "redis-server", "/redis.conf" ]

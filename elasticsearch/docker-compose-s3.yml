@@ -1,0 +1,38 @@
+version: '3'
+services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.10.1
+    environment:
+      - cluster.name=my-cluster
+      - node.name=node-1
+      - discovery.seed_hosts=node-1,node-2
+      - cluster.initial_master_nodes=node-1,node-2
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - xpack.security.enabled=false
+      - xpack.monitoring.enabled=false
+      - xpack.ml.enabled=false
+      - xpack.watcher.enabled=false
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - s3_data:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+    networks:
+      - elastic
+
+volumes:
+  s3_data:
+    driver: "s3"
+    driver_opts:
+      bucket: "my-bucket"
+      region: "us-east-1"
+      access_key: "your_access_key"
+      secret_key: "your_secret_key"
+
+networks:
+  elastic:
+    driver: "bridge"
