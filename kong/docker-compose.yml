@@ -62,12 +62,12 @@ services:
  #     - kong-net
     environment:
       DB_ADAPTER: postgres
-      DB_HOST: 10.173.1.38   # [change-me] : IP address of your postgresql database, must be accessible from konga node
+      DB_HOST: host  # [change-me] : IP address of your postgresql database, must be accessible from konga node
       DB_PORT: 5432         # [change-me] : postgresql port
-      DB_USER: postx-dev     # [change-me] : postgresql username
-      DB_PASSWORD: INJE2X2LIVBUKXZSGAZDECQ=     # [change-me] : postgresql password
+      DB_USER: username    # [change-me] : postgresql username
+      DB_PASSWORD: password  # [change-me] : postgresql password
       # any string will OK for token
-      TOKEN_SECRET: iu7YDcPLiZkozQXzZ9kka3Ee1Vid5ZgQ
+      TOKEN_SECRET: secret
       DB_DATABASE: konga_db
       NODE_ENV: production
     ports:
