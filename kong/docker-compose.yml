@@ -18,9 +18,9 @@ services:
  #   image: kong
   #  environment:
    #   - KONG_DATABASE=kong
-    #  - KONG_PG_HOST=10.173.1.38
-     # - KONG_PG_USER=postx-dev
-      #- KONG_PG_PASSWORD=INJE2X2LIVBUKXZSGAZDECQ= 
+    #  - KONG_PG_HOST=localhost
+     # - KONG_PG_USER=user
+      #- KONG_PG_PASSWORD=pass
       #- KONG_CASSANDRA_CONTACT_POINTS=kong
     #command: kong migrations bootstrap
     #restart: on-failure
@@ -34,9 +34,9 @@ services:
       - LC_CTYPE=en_US.UTF-8
       - LC_ALL=en_US.UTF-8
       - KONG_DATABASE=kong
-      - KONG_PG_HOST=10.173.1.38
-      - KONG_PG_USER=postx-dev
-      - KONG_PG_PASSWORD=INJE2X2LIVBUKXZSGAZDECQ=
+      - KONG_PG_HOST=localhost
+      - KONG_PG_USER=user
+      - KONG_PG_PASSWORD=pass
       - KONG_CASSANDRA_CONTACT_POINTS=kong
       - KONG_PROXY_ACCESS_LOG=/dev/stdout
       - KONG_ADMIN_ACCESS_LOG=/dev/stdout
